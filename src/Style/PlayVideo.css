@@ -1,0 +1,21 @@
+.playvideo{
+    display: flex;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    justify-content: space-around;
+}
+/* .reactplayer{
+    /* width: 300px; */
+    /* height: 500px; */
+
+.like{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.title_share{
+    display: flex;
+    justify-content: space-evenly;
+}
+p{
+    color: gray;
+}
