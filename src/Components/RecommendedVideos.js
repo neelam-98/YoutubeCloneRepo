@@ -14,7 +14,7 @@ function RecommendedVideos() {
 
 
     useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=IN&key=AIzaSyDHV7y5qmz38WLa3qc8r1uu0t_5welKiGg`)
+        axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&part=player&maxResults=20&regionCode=IN&key=AIzaSyDHV7y5qmz38WLa3qc8r1uu0t_5welKiGg`)
           .then(response => {
             console.log(response.data.items);
             setData(response.data.items);

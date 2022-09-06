@@ -11,14 +11,21 @@ function History() {
 
   return (
     <>
-    {/* <p>history</p> */}
+      <p>History Page</p>
       {
         listingVideo && listingVideo.length > 0 && 
         listingVideo.map((listingItem)=>{ 
+          // console.log("mapping",listingItem.historyList.id);
+          const url =listingItem.historyList.player.embedHtml;
+          // const channelTitle = listingItem.list[0].snippet.channelTitle;
+          // const viewCount  = listingItem.list[0].statistics.viewCount;
+          // const title = listingItem.list[0].snippet.title;
+
         
           return(
             <>
-           <p>{listingItem.id}</p>
+            <ReactPlayer url={url}/>
+           <p>{listingItem.historyList.id}</p>
             </>
           )
         })

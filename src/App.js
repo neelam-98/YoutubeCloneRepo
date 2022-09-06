@@ -16,8 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/:id" element={<PlayVideo/>} />
+          <Route path="/search/:inputSearch" element={<WatchLater/>} />
           <Route path="/history" element={<History/>} />
           <Route path="/watchlater" element={<WatchLater/>} />
+
         </Routes>
       </BrowserRouter>
     </Provider>
