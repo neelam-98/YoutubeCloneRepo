@@ -2,6 +2,8 @@ import React from "react";
 import {HomeOutlined, SortDescendingOutlined, SubnodeOutlined, HistoryOutlined, FieldTimeOutlined, LikeFilled,DownloadOutlined, YoutubeFilled} from "@ant-design/icons";
 import SideBarRow from "./SideBarRow";
 import "../Style/SideBar.css";
+import { Link } from 'react-router-dom';
+
 
 const SideBar = () => {
     return (
@@ -11,8 +13,12 @@ const SideBar = () => {
             <SideBarRow Icon={SubnodeOutlined} title='Subscription' />
             <hr />
             <SideBarRow Icon={YoutubeFilled} title='Library' />
-            <SideBarRow Icon={HistoryOutlined} title='History' />
-            <SideBarRow Icon={FieldTimeOutlined} title='Watch Later' />
+            <Link to="/history">
+                <SideBarRow Icon={HistoryOutlined} title='History' />
+            </Link>
+            <Link to="/watchlater">
+                <SideBarRow Icon={FieldTimeOutlined} title='Watch Later' />
+            </Link>
             <SideBarRow Icon={DownloadOutlined } title='Downloads' />
             <SideBarRow Icon={LikeFilled} title='Your videos' />
             <hr />

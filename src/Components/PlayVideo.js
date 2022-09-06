@@ -7,11 +7,14 @@ import  {DateTime} from "luxon";
 import RecommendedVideos from "./RecommendedVideos";
 import { DislikeOutlined, DownloadOutlined, FieldTimeOutlined, LikeOutlined, ShareAltOutlined } from "@ant-design/icons";
 import "../Style/PlayVideo.css";
+import { addVideo } from "../redux/action/action";
+import {useDispatch} from "react-redux";
 
 function PlayVideo() {
 
     const {id} = useParams();
     const [data,setData] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&part=player&id=${id}&key=AIzaSyDHV7y5qmz38WLa3qc8r1uu0t_5welKiGg`)
@@ -23,7 +26,13 @@ function PlayVideo() {
             console.log(error);
           })
         }, [data])
-        
+
+      const handleClick = () =>{
+        dispatch(
+          addVideo(data)
+        )
+      };
+
   return (
       <> 
       { data && data.length>0 &&         
@@ -46,7 +55,7 @@ function PlayVideo() {
                   <LikeOutlined className="like"/>Like
                   <DislikeOutlined className="dislike"/>Dislike
                   <ShareAltOutlined className="share"/>Share
-                  <FieldTimeOutlined className="watchlater"/>Watch Later
+                  <FieldTimeOutlined className="watchlater" onClick={handleClick}/>Watch Later
                   <DownloadOutlined className="download"/>Download
                 </div>
               </div>
