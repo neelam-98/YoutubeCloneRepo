@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const SideBar = () => {
     return (
         <div className='sidebar'>
-            <SideBarRow Icon={HomeOutlined} title='Home' />
+            <SideBarRow Icon={HomeOutlined} title='Home'/>
             <SideBarRow Icon={SortDescendingOutlined} title='Trending' />
             <SideBarRow Icon={SubnodeOutlined} title='Subscription' />
             <hr />
@@ -20,7 +20,7 @@ const SideBar = () => {
                 <SideBarRow Icon={FieldTimeOutlined} title='Watch Later' />
             </Link>
             <SideBarRow Icon={DownloadOutlined } title='Downloads' />
-            <SideBarRow Icon={LikeFilled} title='Like Videos' />
+            <SideBarRow Icon={LikeFilled} title='Liked Videos' />
             <hr />
         </div>
     )

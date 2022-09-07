@@ -42,7 +42,7 @@ function RecommendedVideos() {
                 <>
                 <div className='videocard'>
                   <Link to={`/${element.id}`}>
-                    <img  onClick = { () => HistoryVideo (element) }className='videocard__image' src={snippet.thumbnails.medium.url} alt='' />
+                    <img  onClick = { () => HistoryVideo (element) }className='videocard__image' src={snippet.thumbnails.medium.url} alt='#' />
                  </Link>
                     <div className="videocard__text">
                       <h4>{snippet.title}</h4>

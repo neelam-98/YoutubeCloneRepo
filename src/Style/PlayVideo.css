@@ -14,8 +14,11 @@
 }
 .title_share{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 p{
     color: gray;
+}
+.icon{
+    padding: 10px;
 }

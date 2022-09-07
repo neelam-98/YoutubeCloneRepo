@@ -3,3 +3,10 @@
     flex-direction: row;
    
 }
+.block{
+    display: flex;
+    background-color: lightgray;
+}
+.content_block{
+    margin-left: 50px;
+}

@@ -8,9 +8,10 @@ function SearchBar() {
     const {inputSearch} = useParams();
     console.log("search data",inputSearch)
     const [data,setData] = useState([]);
+    
 
     useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&type=title&q=${inputSearch}$safeSearch=none&key=AIzaSyDHV7y5qmz38WLa3qc8r1uu0t_5welKiGg`)
+        axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&type=title&q=${inputSearch}&safeSearch=none&key=AIzaSyDHV7y5qmz38WLa3qc8r1uu0t_5welKiGg`)
           .then(response => {
             console.log(response.data.items);
             setData(response.data.items);

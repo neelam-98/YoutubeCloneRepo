@@ -46,17 +46,20 @@ function PlayVideo() {
           <Header/>
           <div className="playvideo">
               <div className="reactplayer">
-                <ReactPlayer url={url} controls width={800} height={500}/>
+                <ReactPlayer url={url} controls width={1000} height={500}/>
                 <div className="title">
+                  <h2>{snippet.channelTitle}</h2>
                   <h2>{snippet.title}</h2>
                 </div>
                 <div className="title_share">
                   <p>{element.statistics.viewCount} views • {timestamp}</p>
-                  <LikeOutlined className="like"/>Like
-                  <DislikeOutlined className="dislike"/>Dislike
-                  <ShareAltOutlined className="share"/>Share
-                  <FieldTimeOutlined className="watchlater" onClick={handleClick}/>Watch Later
-                  <DownloadOutlined className="download"/>Download
+                  <div className="icons_block">
+                    <LikeOutlined className="icon"/>Like
+                    <DislikeOutlined className="icon"/>Dislike
+                    <ShareAltOutlined className="icon"/>Share
+                    <FieldTimeOutlined className="icon" onClick={handleClick}/>Watch Later
+                    <DownloadOutlined className="icon"/>Download
+                  </div>
                 </div>
               </div>
               <RecommendedVideos/>
