@@ -13,6 +13,7 @@
     height: 25px;
     object-fit: contain;
     margin-left: 10px;
+    margin-bottom: -6px;
 }
 
 .header__center {

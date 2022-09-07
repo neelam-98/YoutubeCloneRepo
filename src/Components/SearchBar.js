@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
+import "../Style/App.css"
+
 import { DislikeOutlined, DownloadOutlined, FieldTimeOutlined, LikeOutlined, ShareAltOutlined } from "@ant-design/icons";
 
 function SearchBar() {
@@ -13,7 +16,7 @@ function SearchBar() {
     useEffect(() => {
         axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&type=title&q=${inputSearch}&safeSearch=none&key=AIzaSyDHV7y5qmz38WLa3qc8r1uu0t_5welKiGg`)
           .then(response => {
-            console.log(response.data.items);
+            console.log("Search bar api",response.data.items);
             setData(response.data.items);
           })
           .catch(error => {
@@ -23,38 +26,29 @@ function SearchBar() {
 
   return (
       <> 
-      <p>Search page</p>
-      {/* { data && data.length>0 &&         
-      data.map((element) => {
-        console.log(element);
-         const  url=element.player.embedHtml;
-        const snippet= element.snippet;
-        const timestamp = DateTime.fromISO(snippet.publishedAt).toRelative();
+      <Header/>
+      {
+        data && data.length>0 &&         
+        data.map((listingItem) => {
+        console.log(listingItem);
+
+        const image = listingItem.snippet.thumbnails.medium.url;
+        const title = listingItem.snippet.channelTitle;
+        
         return(
           <>
-          <Header/>
-          <div className="SearchBar">
-              <div className="reactplayer">
-                <ReactPlayer url={url} controls width={800} height={500}/>
-                <div className="title">
-                  <h2>{snippet.title}</h2>
-                </div>
-                <div className="title_share">
-                  <p>{element.statistics.viewCount} views • {timestamp}</p>
-                  <LikeOutlined className="like"/>Like
-                  <DislikeOutlined className="dislike"/>Dislike
-                  <ShareAltOutlined className="share"/>Share
-                  <FieldTimeOutlined className="watchlater" onClick={handleClick}/>Watch Later
-                  <DownloadOutlined className="download"/>Download
-                </div>
+          <div className="full_block">
+            <br/><br/>
+              <div className="block">
+                <img src={image} alt="#" width={600} height={300} className="search_img"/> 
+                <h1 className="search_heading">{title}</h1>
               </div>
-              <RecommendedVideos/>
+            <br/><br/>
           </div>
           </>
          )
         })
-    } */}
-    
+      }
     </>
   );
 }

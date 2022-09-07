@@ -27,7 +27,7 @@ function PlayVideo() {
           })
         }, [data])
 
-      const handleClick = () =>{
+    const handleClick = () =>{
         dispatch(
           addVideo(data)
         )
@@ -36,11 +36,11 @@ function PlayVideo() {
   return (
       <> 
       { data && data.length>0 &&         
-      data.map((element) => {
-        console.log(element);
-         const  url=element.player.embedHtml;
-        const snippet= element.snippet;
-        const timestamp = DateTime.fromISO(snippet.publishedAt).toRelative();
+        data.map((element) => {
+          console.log(element);
+          const  url=element.player.embedHtml;
+          const snippet= element.snippet;
+          const timestamp = DateTime.fromISO(snippet.publishedAt).toRelative();
         return(
           <>
           <Header/>
@@ -67,7 +67,7 @@ function PlayVideo() {
           </>
          )
         })
-    }
+      }
     
     </>
   );

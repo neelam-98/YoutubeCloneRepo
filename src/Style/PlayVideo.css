@@ -22,3 +22,18 @@ p{
 .icon{
     padding: 10px;
 }
+.playVideo_block{
+    display: flex;
+}
+.block{
+    display: flex;
+}
+.content_block{
+    margin-left: 50px;
+}
+.full_block{
+    background-color: #f9f9f9;
+}
+.video_block{
+    margin-left: 30px;
+}
