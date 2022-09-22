@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import SideBar from "./SideBar";
 import "../Style/App.css"
 
 function SearchBar() {
@@ -19,33 +20,37 @@ function SearchBar() {
           .catch(error => {
             console.log(error);
           })
-        }, [])
+        }, [data])
 
   return (
-      <> 
+    <> 
       <Header/>
-      {
-        data && data.length>0 &&         
-        data.map((listingItem) => {
-        console.log(listingItem);
+      <div className = "searchbar_sidebar">
+      <SideBar/>
+        <div className="searchBlock">
+          <br/><br/>
+            {
+              data && data.length>0 &&         
+              data.map((listingItem) => {
+              console.log(listingItem);
 
-        const image = listingItem.snippet.thumbnails.medium.url;
-        const title = listingItem.snippet.channelTitle;
-        
-        return(
-          <>
-          <div className="full_block">
-            <br/><br/>
-              <div className="block">
-                <img src={image} alt="#" width={600} height={300} className="search_img"/> 
-                <h1 className="search_heading">{title}</h1>
-              </div>
-            <br/><br/>
-          </div>
-          </>
-         )
-        })
-      }
+              const image = listingItem.snippet.thumbnails.medium.url;
+              const title = listingItem.snippet.channelTitle;
+              
+              return(
+                  <>
+                      <div className="card">
+                        <img src={image} alt="#" width={400} height={200} className="search_img"/> 
+                        <h1 className="search_heading">{title}</h1>
+                      </div>
+                  
+                  </>
+                )
+              })
+            }
+        <br/><br/>
+      </div>
+    </div>
     </>
   );
 }

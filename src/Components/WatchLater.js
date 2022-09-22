@@ -1,34 +1,45 @@
+
 import React from 'react';
 import ReactPlayer from 'react-player';
-import { useSelector } from 'react-redux';
-import { LikeOutlined, DislikeOutlined, ShareAltOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { LikeOutlined, DislikeOutlined, ShareAltOutlined, DeleteOutlined } from '@ant-design/icons';
 import { DateTime } from 'luxon';
 import "../Style/PlayVideo.css";
 import Header from './Header';
+import { clearWatchLater, deleteWatchLater } from '../redux/action/action';
 
 function WatchLater() {
   // const state = useSelector((state) => state.w_reducer);
   // console.log('state',state.list);
   // const videoList =state.list ;
 
+  const dispatch = useDispatch();
+   
   //or this way
-  const listingVideo = useSelector((state) => state.w_reducer.list)
+  const listingVideo = useSelector((state) => state.W_reducer.watchlaterList)
   console.log('listing video state',listingVideo);
 
+  const watchLaterClick = () => {
+    dispatch (
+      clearWatchLater(listingVideo)
+    )
+  }
   return (
       <>
       <Header/>
+      <br/>
+      <button onClick={() =>watchLaterClick()}  className="clearBtn">Clear Watchlater</button>        
         <div className='full_block'>
           <br/><br/>
           {
             listingVideo && listingVideo.length > 0 && 
             listingVideo.map((listingItem)=>{ 
-              const url = listingItem.list[0].player.embedHtml;
-              const channelTitle = listingItem.list[0].snippet.channelTitle;
-              const viewCount  = listingItem.list[0].statistics.viewCount;
-              const title = listingItem.list[0].snippet.title;
-              const likes = listingItem.list[0].statistics.likeCount;
-              const snippet = listingItem.list[0].snippet
+              const url = listingItem.watchlaterList.player.embedHtml;
+              const channelTitle = listingItem.watchlaterList.snippet.channelTitle;
+              const viewCount  = listingItem.watchlaterList.statistics.viewCount;
+              const title = listingItem.watchlaterList.snippet.title;
+              const likes = listingItem.watchlaterList.statistics.likeCount;
+              const snippet = listingItem.watchlaterList.snippet
               const timestamp = DateTime.fromISO(snippet.publishedAt).toRelative();
 
               return(
@@ -45,6 +56,7 @@ function WatchLater() {
                           <LikeOutlined className="icon"/>{likes} 
                           <DislikeOutlined className="icon"/>Dislike
                           <ShareAltOutlined className="icon" />Share
+                          <DeleteOutlined className='icon' onClick={() => dispatch(deleteWatchLater(listingItem))} />Remove from Watchlater
                         </div>
                     </div>
                   </div>

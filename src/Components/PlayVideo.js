@@ -7,7 +7,7 @@ import  {DateTime} from "luxon";
 import RecommendedVideos from "./RecommendedVideos";
 import { DislikeOutlined, DownloadOutlined, FieldTimeOutlined, LikeOutlined, ShareAltOutlined } from "@ant-design/icons";
 import "../Style/PlayVideo.css";
-import { addVideo } from "../redux/action/action";
+import { addLikeVideo, addVideo } from "../redux/action/action";
 import {useDispatch} from "react-redux";
 
 function PlayVideo() {
@@ -29,9 +29,15 @@ function PlayVideo() {
 
     const handleClick = () =>{
         dispatch(
-          addVideo(data)
+          addVideo(data[0])
         )
       };
+
+    const likeClick = () => {
+      dispatch (
+        addLikeVideo(data[0])
+      )
+    }
 
   return (
       <> 
@@ -54,7 +60,7 @@ function PlayVideo() {
                 <div className="title_share">
                   <p>{element.statistics.viewCount} views • {timestamp}</p>
                   <div className="icons_block">
-                    <LikeOutlined className="icon"/>Like
+                    <LikeOutlined className="icon" onClick ={()=>likeClick()}/>Like
                     <DislikeOutlined className="icon"/>Dislike
                     <ShareAltOutlined className="icon"/>Share
                     <FieldTimeOutlined className="icon" onClick={handleClick}/>Watch Later

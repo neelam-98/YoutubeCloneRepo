@@ -20,7 +20,9 @@ const SideBar = () => {
                 <SideBarRow Icon={FieldTimeOutlined} title='Watch Later' />
             </Link>
             <SideBarRow Icon={DownloadOutlined } title='Downloads' />
-            <SideBarRow Icon={LikeFilled} title='Liked Videos' />
+            <Link to="likevideo">
+                <SideBarRow Icon={LikeFilled} title='Liked Videos' />
+            </Link>
             <hr />
         </div>
     )

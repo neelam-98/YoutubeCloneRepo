@@ -1,43 +1,42 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
-import { useDispatch, useSelector } from 'react-redux';
-import { DateTime } from 'luxon';
-import { LikeOutlined, DislikeOutlined, ShareAltOutlined, DeleteOutlined } from '@ant-design/icons';
+import { LikeOutlined,DislikeOutlined, ShareAltOutlined, DeleteOutlined} from '@ant-design/icons';
 import Header from './Header';
+import { DateTime } from 'luxon';
+import { deleteLikeVideo, clearLikeVideo} from '../redux/action/action';
+import { useDispatch } from 'react-redux';
 import "../Style/App.css";
-import { deleteHistory, clearHistory} from '../redux/action/action';
 
-function History() {
-  
-  const dispatch = useDispatch();
+const LikeVideo = () => {
 
-  const listingVideo = useSelector((state) => state.H_reducer.historyList)
-  console.log('listing video state',listingVideo);
+    const dispatch = useDispatch();
 
-  const historyclick = () => {
-    dispatch(
-      clearHistory(listingVideo)
-    )
-  }
+    const listingVideo = useSelector ((state) => state.L_reducer.likeVideoList)
+    console.log('listing video state',listingVideo);
 
+    const likeVideoClick = () => {
+        dispatch(
+            clearLikeVideo(listingVideo)
+        )
+    }
   return (
-    <>
-      <Header/>
-      <button onClick={() =>historyclick()} className="clearBtn" >Clear History</button>
-      <br/>
+   <>
+   <Header/>
+   <button onClick={() =>likeVideoClick()} className="clearBtn">Clear Likes</button>
+   <br/>
         <div className='full_block'>
           <br/><br/>
           {
             listingVideo && listingVideo.length > 0 && 
             listingVideo.map((listingItem)=>{ 
-              // console.log("mapping",listingItem.historyList.id);
-              const url =listingItem.historyList.player.embedHtml;
-              const channelTitle = listingItem.historyList.snippet.channelTitle;
-              const title = listingItem.historyList.snippet.title;
-              const viewCount  = listingItem.historyList.statistics.viewCount;
-              const snippet = listingItem.historyList.snippet
+              const url =listingItem.likeVideoList.player.embedHtml;
+              const channelTitle = listingItem.likeVideoList.snippet.channelTitle;
+              const title = listingItem.likeVideoList.snippet.title;
+              const viewCount  = listingItem.likeVideoList.statistics.viewCount;
+              const snippet = listingItem.likeVideoList.snippet
               const timestamp = DateTime.fromISO(snippet.publishedAt).toRelative();
-              const likes = listingItem.historyList.statistics.likeCount;
+              const likes = listingItem.likeVideoList.statistics.likeCount;
               
               return(
                 <>
@@ -53,7 +52,7 @@ function History() {
                         <LikeOutlined className="icon"/>{likes}
                         <DislikeOutlined className="icon"/>Dislike
                         <ShareAltOutlined className="icon"/>Share
-                        <DeleteOutlined className='icon' onClick={()=>dispatch(deleteHistory(listingItem))}/>Remove from History
+                        <DeleteOutlined className='icon' onClick={()=>dispatch(deleteLikeVideo(listingItem))}/>Remove from Likes 
                       </div>
                     </div>
                   </div>
@@ -68,4 +67,4 @@ function History() {
   )
 }
 
-export default History;
+export default LikeVideo;

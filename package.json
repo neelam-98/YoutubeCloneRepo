@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.22.8",
     "axios": "^0.27.2",
+    "babel-preset-es2015": "^6.24.1",
     "luxon": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -18,6 +19,7 @@
     "react-scripts": "^2.1.3",
     "react-youtube": "^9.0.3",
     "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },

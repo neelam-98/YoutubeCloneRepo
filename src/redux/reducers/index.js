@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import HistoryReducer from "./HistoryReducer";
-import watchlater_reducer from "./watchlater_reducer";
+import LikevideoReducer from  "./LikeVideoReducer";
+import WatchLaterReducer from "./WatchLaterReducer";
 
 const rootReducer = combineReducers ( {
-    w_reducer : watchlater_reducer,
+    W_reducer : WatchLaterReducer,
     H_reducer : HistoryReducer,
+    L_reducer : LikevideoReducer,
 })
  export default rootReducer ;
