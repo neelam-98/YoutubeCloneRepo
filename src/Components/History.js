@@ -12,7 +12,6 @@ function History() {
   const dispatch = useDispatch();
 
   const listingVideo = useSelector((state) => state.H_reducer.historyList)
-  console.log('listing video state',listingVideo);
 
   const historyclick = () => {
     dispatch(
